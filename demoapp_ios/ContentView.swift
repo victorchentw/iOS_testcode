@@ -17,6 +17,8 @@ struct ContentView: View {
         } detail: {
             DetailView(selectedItem: selectedItem)
         }
+        //floating effect
+        // .navigationSplitViewStyle(.prominentDetail)
         .onAppear {
             // 啟動時確保先顯示sidebar
             if selectedItem == nil {
@@ -55,6 +57,7 @@ struct SidebarView: View {
         }
         .navigationTitle("Demo App")
         .navigationBarTitleDisplayMode(.large)
+        .listStyle(.sidebar)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
