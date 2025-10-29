@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedItem: SidebarItem?
-    @State private var columnVisibility = NavigationSplitViewVisibility.all
+    @State private var columnVisibility = NavigationSplitViewVisibility.doubleColumn
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
@@ -19,10 +19,13 @@ struct ContentView: View {
         }
         //floating effect
         // .navigationSplitViewStyle(.prominentDetail)
+        //fixed sidebar on ios18 regular width screen
+        .navigationSplitViewStyle(.balanced)
         .onAppear {
             // 啟動時確保先顯示sidebar
             if selectedItem == nil {
                 columnVisibility = .all
+                // columnVisibility = .doubleColumn
             }
         }
     }
